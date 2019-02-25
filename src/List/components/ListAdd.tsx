@@ -25,16 +25,17 @@ class ListAdd extends React.Component<ListAddProps, ListAddState> {
   public render() {
     const { text } = this.state;
     return (
-      <div>
+      <form onSubmit={this._handleSubmit}>
         <input onChange={this._handleOnChange} value={text} />
-        <button onClick={this._handleSubmit}>Add Item</button>
-      </div>
+        <input type="submit" value="Add Item" />
+      </form>
     );
   }
   private _handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ text: e.target.value });
   };
-  private _handleSubmit = () => {
+  private _handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
     this.props.addItem(uuidv4(), this.state.text);
     this.setState({ text: "" });
   };
