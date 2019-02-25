@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { uuidv4 as uuid } from "uuidv4";
+import uuidv4 from "uuidv4";
 
 import { addItem } from "../redux/actions";
 
@@ -35,7 +35,7 @@ class ListAdd extends React.Component<ListAddProps, ListAddState> {
     this.setState({ text: e.target.value });
   };
   private _handleSubmit = () => {
-    this.props.addItem(uuid(), this.state.text);
+    this.props.addItem(uuidv4(), this.state.text);
     this.setState({ text: "" });
   };
 }
