@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { uuidv4 as uuid } from "uuidv4";
 
-interface ListAddMapProps {}
+import { addItem } from "../redux/actions";
 
-interface ListAddDispatchProps {}
+interface ListAddDispatchProps {
+  addItem: typeof addItem;
+}
 
-interface ListAddProps extends ListAddMapProps, ListAddDispatchProps {}
+interface ListAddProps extends ListAddDispatchProps {}
 
 interface ListAddState {
   text: string;
@@ -31,14 +34,17 @@ class ListAdd extends React.Component<ListAddProps, ListAddState> {
   private _handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ text: e.target.value });
   };
-  private _handleSubmit = () => {};
+  private _handleSubmit = () => {
+    this.props.addItem(uuid(), this.state.text);
+    this.setState({ text: "" });
+  };
 }
 
-const mapStateToProps = ({}): ListAddMapProps => ({});
-
-const mapDispatchToProps = (dispatch: Dispatch): ListAddDispatchProps => ({});
+const mapDispatchToProps = (dispatch: Dispatch): ListAddDispatchProps => ({
+  addItem: (id, text) => dispatch(addItem(id, text))
+});
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(ListAdd);

@@ -1,3 +1,7 @@
+export interface ListStore {
+  items: ListItem[];
+}
+
 export interface ListItem {
   id: string;
   text: string;
@@ -7,6 +11,8 @@ export enum actions {
   ADD_ITEM = "List/Add",
   REMOVE_ITEM = "List/Remove"
 }
+
+export type ListActions = AddItemAction | RemoveItemAction;
 
 export interface AddItemAction {
   id: string;

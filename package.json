@@ -12,7 +12,8 @@
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
-    "typescript": "3.3.3333"
+    "typescript": "3.3.3333",
+    "uuidv4": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
