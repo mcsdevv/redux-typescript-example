@@ -1,29 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+
+import { Item, ListStore } from "../redux/types";
 
 import ListAdd from "./ListAdd";
+import ListItem from "./ListItem";
 
-interface ListMapProps {}
+interface ListMapProps {
+  items: Item[];
+}
 
-interface ListDispatchProps {}
+interface ListProps extends ListMapProps {}
 
-interface ListProps extends ListMapProps, ListDispatchProps {}
-
-function List({  }: ListProps) {
+function List({ items }: ListProps) {
   return (
     <>
       <h1>List</h1>
       <ListAdd />
+      {items.map(i => (
+        <ListItem item={i} key={i.id} />
+      ))}
     </>
   );
 }
 
-const mapStateToProps = ({}): ListMapProps => ({});
-
-const mapDispatchToProps = (dispatch: Dispatch): ListDispatchProps => ({});
+const mapStateToProps = ({ items }: ListStore): ListMapProps => ({
+  items
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(List);

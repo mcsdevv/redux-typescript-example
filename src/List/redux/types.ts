@@ -1,8 +1,8 @@
 export interface ListStore {
-  items: ListItem[];
+  items: Item[];
 }
 
-export interface ListItem {
+export interface Item {
   id: string;
   text: string;
 }
