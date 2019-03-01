@@ -1,0 +1,15 @@
+.item {
+  align-items: center;
+  border: 2px solid black;
+  display: flex;
+  height: 35px;
+  justify-content: space-between;
+  margin: 0.5em 0;
+  padding: 1em;
+  .text {
+    font-size: 14px;
+  }
+  .icon {
+    cursor: pointer;
+  }
+}
