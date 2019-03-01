@@ -1,0 +1,14 @@
+.list {
+  display: grid;
+  justify-content: center;
+  margin: 2em auto;
+  width: 400px;
+  .heading {
+    font-weight: 600;
+    font-size: 36px;
+    margin-bottom: 0;
+  }
+  .subHeading {
+    font-size: 14px;
+  }
+}

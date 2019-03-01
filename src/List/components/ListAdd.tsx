@@ -5,6 +5,8 @@ import uuidv4 from "uuidv4";
 
 import { addItem } from "../redux/actions";
 
+import styles from "../styles/ListAdd.module.scss";
+
 interface ListAddDispatchProps {
   addItem: typeof addItem;
 }
@@ -25,9 +27,14 @@ class ListAdd extends React.Component<ListAddProps, ListAddState> {
   public render() {
     const { text } = this.state;
     return (
-      <form onSubmit={this._handleSubmit}>
-        <input onChange={this._handleOnChange} value={text} />
-        <input type="submit" value="Add Item" />
+      <form className={styles.form} onSubmit={this._handleSubmit}>
+        <input
+          className={styles.input}
+          onChange={this._handleOnChange}
+          placeholder="Add an item..."
+          value={text}
+        />
+        <input className={styles.button} type="submit" value="+" />
       </form>
     );
   }
