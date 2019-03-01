@@ -24,7 +24,6 @@
     "eject": "react-scripts eject",
     "now-build": "react-scripts build"
   }
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
