@@ -1,9 +1,4 @@
-import {
-  actions,
-  AddItemAction,
-  GetItemAction,
-  RemoveItemAction
-} from "./types";
+import { actions, AddItemAction, RemoveItemAction } from "./types";
 
 export const addItem = (id: string, text: string): AddItemAction => ({
   id,
