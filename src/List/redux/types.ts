@@ -8,8 +8,8 @@ export interface Item {
 }
 
 export enum actions {
-  ADD_ITEM = "List/Add",
-  REMOVE_ITEM = "List/Remove"
+  ADD_ITEM = "List/AddItem",
+  REMOVE_ITEM = "List/RemoveItem"
 }
 
 export type ListActions = AddItemAction | RemoveItemAction;
