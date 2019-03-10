@@ -28,13 +28,20 @@ class ListAdd extends React.Component<ListAddProps, ListAddState> {
     const { text } = this.state;
     return (
       <form className={styles.form} onSubmit={this._handleSubmit}>
-        <input
-          className={styles.input}
-          onChange={this._handleOnChange}
-          placeholder="Add an item..."
-          value={text}
-        />
-        <input className={styles.button} type="submit" value="+" />
+        <div className={styles.label}>
+          <label htmlFor="text">Add an item...</label>
+        </div>
+        <div>
+          <input
+            className={styles.input}
+            id="text"
+            onChange={this._handleOnChange}
+            placeholder={"..."}
+            type="text"
+            value={text}
+          />
+          <input className={styles.button} type="submit" value="+" />
+        </div>
       </form>
     );
   }
