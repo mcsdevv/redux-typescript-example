@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./List/redux/reducers";
 import "./index.css";
-import App from "./App";
+import List from "./List/components/List";
 
 const store = createStore(
   reducers,
@@ -14,7 +14,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <List />
   </Provider>,
   document.getElementById("root")
 );
