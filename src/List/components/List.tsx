@@ -14,20 +14,16 @@ interface ListMapProps {
 
 interface ListProps extends ListMapProps {}
 
-function List({ items }: ListProps) {
-  return (
-    <div className={styles.list}>
-      <h1 className={styles.heading}>List</h1>
-      <p className={styles.subHeading}>
-        Fulfilling all your list requirements.
-      </p>
-      <ListAdd />
-      {items.map(i => (
-        <ListItem item={i} key={i.id} />
-      ))}
-    </div>
-  );
-}
+const List = ({ items }: ListProps) => (
+  <div className={styles.list}>
+    <h1 className={styles.heading}>List</h1>
+    <p className={styles.subHeading}>Fulfilling all your list requirements.</p>
+    <ListAdd />
+    {items.map(i => (
+      <ListItem item={i} key={i.id} />
+    ))}
+  </div>
+);
 
 const mapStateToProps = ({ items }: ListStore): ListMapProps => ({
   items

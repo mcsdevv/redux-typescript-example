@@ -1,28 +1,48 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { fireEvent, render } from "react-testing-library";
 import ListItem from "../List/components/ListItem";
-
-import reducers from "../List/redux/reducers";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-
-const store = createStore(reducers);
+import ProviderWrap from "../../test/ProviderWrap";
 
 const props = {
   item: {
-    id: 1,
+    id: "1",
     text: "test"
-  },
-  removeItem: () => {}
+  }
 };
 
 test("renders", () => {
   const { getByText } = render(
-    <Provider store={store}>
+    <ProviderWrap>
       <ListItem {...props} />
-    </Provider>
+    </ProviderWrap>
   );
-  const node = getByText("test");
 
-  expect(node).toHaveTextContent("test");
+  const node = getByText(props.item.text);
+
+  expect(node).toHaveTextContent(props.item.text);
 });
+
+test("renders without props", () => {
+  const { container } = render(
+    <ProviderWrap>
+      <ListItem />
+    </ProviderWrap>
+  );
+
+  expect(container).not.toThrow;
+});
+
+// test("removeItem fires", () => {
+//   const removeItemMock = jest.fn();
+//   const { getByTestId } = render(
+//     <ProviderWrap>
+//       <ListItem {...props} removeItem={removeItemMock} />
+//     </ProviderWrap>
+//   );
+
+//   const node = getByTestId("trash");
+//   fireEvent.click(node);
+
+//   expect(removeItemMock).toHaveBeenCalledTimes(1);
+//   expect(removeItemMock).toHaveBeenCalledWith(props.item.id);
+// });

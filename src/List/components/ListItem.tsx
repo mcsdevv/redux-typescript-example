@@ -17,16 +17,16 @@ interface ListItemProps extends ListItemDispatchProps {
   item: Item;
 }
 
-function ListItem({ item, removeItem }: ListItemProps) {
-  return (
-    <div className={styles.item}>
-      <p className={styles.text}>{item.text}</p>
-      <Trash2 className={styles.icon} onClick={() => removeItem(item.id)}>
-        {item.id}
-      </Trash2>
-    </div>
-  );
-}
+const ListItem = ({ item, removeItem }: ListItemProps) => (
+  <div className={styles.item}>
+    <p className={styles.text}>{item && item.text}</p>
+    <Trash2
+      className={styles.icon}
+      data-testid="trash"
+      onClick={() => removeItem(item.id)}
+    />
+  </div>
+);
 
 const mapDispatchToProps = (dispatch: Dispatch): ListItemDispatchProps => ({
   removeItem: id => dispatch(removeItem(id))
